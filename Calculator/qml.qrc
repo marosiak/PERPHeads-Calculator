@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Components/Element.qml</file>
+        <file>Components/PaperRipple.qml</file>
+        <file>icon.ico</file>
+    </qresource>
+</RCC>
