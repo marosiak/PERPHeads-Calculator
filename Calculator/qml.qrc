@@ -4,5 +4,9 @@
         <file>Components/Element.qml</file>
         <file>Components/PaperRipple.qml</file>
         <file>icon.ico</file>
+        <file>Models/Materials.qml</file>
+        <file>Models/Ammo.qml</file>
+        <file>Models/Pistols.qml</file>
+        <file>Models/Shotguns.qml</file>
     </qresource>
 </RCC>

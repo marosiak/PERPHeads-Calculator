@@ -1,6 +1,7 @@
 import QtQuick 2.5
 import QtQuick.Controls 2.0
 import "Components"
+import "Models"
 
 ApplicationWindow {
     id: root
@@ -10,6 +11,11 @@ ApplicationWindow {
     title: qsTr("PERPHeads Calculator")
     property int tax:25
     property int valueWithTax
+
+    Ammo        {id: ammoModel}
+    Materials   {id: materialsModel}
+    Pistols     {id: pistolsModel}
+    Pistols     {id: shotgunsModel}
 
     footer: Item {
         width: parent.width
@@ -41,6 +47,25 @@ ApplicationWindow {
                     x: listView.x
                       model: ListModel {
                           ListElement { key: "Materials";}
+                          ListElement { key: "Ammo";}
+                          ListElement { key: "Pistols";}
+                          ListElement { key: "Shotguns";}
+                      }
+                      onHighlighted: {
+                          switch(index) {
+                          case 0:
+                              listView.model = materialsModel
+                              break;
+                          case 1:
+                              listView.model = ammoModel
+                              break;
+                          case 2:
+                              listView.model = pistolsModel
+                              break;
+                          case 3:
+                              listView.model = shotgunsModel
+                              break;
+                          }
                       }
                   }
 
@@ -86,35 +111,6 @@ ApplicationWindow {
     ListModel {
         id: koszykModel
     }
-    ListModel {
-        id: materialsModel
-        ListElement {name: "Wrench"; price: 250 }
-        ListElement {name: "Paint Bucket"; price: 60 }
-        ListElement { name: "Metal Rod"; price: 500}
-        ListElement { name: "Wooden Board"; price: 400 }
-        ListElement { name: "Metal Polish"; price: 50 }
-        ListElement { name: "Brass Bulk"; price: 100 }
-        ListElement { name: "Glass Shard"; price: 550 }
-        ListElement { name: "Chunk of Plastic"; price: 200 }
-        ListElement { name: "Hunk of Polymer"; price: 100 }
-        ListElement { name: "Piece of Metal"; price: 500 }
-        ListElement { name: "Cardboard box"; price: 150 }
-        ListElement { name: "Propane Tank"; price: 1500 }
-        ListElement { name: "Lodine"; price: 200 }
-        ListElement { name: "Saw-Horse"; price: 750 }
-        ListElement { name: "Glue"; price: 125 }
-        ListElement { name: "Wood Nails"; price: 100 }
-        ListElement { name: "Box of Springs"; price: 50 }
-        ListElement { name: "Electronics"; price: 300 }
-        ListElement { name: "Gun Powder"; price: 100 }
-        ListElement { name: "Cinder Blocks"; price: 500 }
-        ListElement { name: "Ref Metal 25%"; price: 675 }
-        ListElement { name: "Ref Metal 50%"; price: 2070 }
-        ListElement { name: "Ref Metal 75%"; price: 3900 }
-        ListElement { name: "Ref Metal 100%"; price: 7675 }
-        ListElement { name: "Gun Powder"; price: 100 }
-        ListElement { name: "Paper Towels"; price: 130 }
-    }
     Row {
         id: fRow
         height: 35
@@ -157,6 +153,9 @@ ApplicationWindow {
                 onClicked: {
                     koszykModel.remove(index)
                     root.valueWithTax -= value * ((root.tax/100)+1)
+                    if(root.valueWithTax < 0) {
+                        root.valueWithTax = 0
+                    }
                 }
             }
 
