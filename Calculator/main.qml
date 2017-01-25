@@ -15,7 +15,7 @@ ApplicationWindow {
     Ammo        {id: ammoModel}
     Materials   {id: materialsModel}
     Pistols     {id: pistolsModel}
-    Pistols     {id: shotgunsModel}
+    Shotguns    {id: shotgunsModel}
 
     footer: Item {
         width: parent.width
