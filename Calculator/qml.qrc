@@ -8,5 +8,6 @@
         <file>Models/Ammo.qml</file>
         <file>Models/Pistols.qml</file>
         <file>Models/Shotguns.qml</file>
+        <file>Models/Magazines.qml</file>
     </qresource>
 </RCC>

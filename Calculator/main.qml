@@ -16,6 +16,7 @@ ApplicationWindow {
     Materials   {id: materialsModel}
     Pistols     {id: pistolsModel}
     Shotguns    {id: shotgunsModel}
+    Magazines   {id: magazinesModel}
 
     footer: Item {
         width: parent.width
@@ -50,6 +51,7 @@ ApplicationWindow {
                           ListElement { key: "Ammo";}
                           ListElement { key: "Pistols";}
                           ListElement { key: "Shotguns";}
+                          ListElement { key: "Magazines";}
                       }
                       onHighlighted: {
                           switch(index) {
@@ -64,6 +66,9 @@ ApplicationWindow {
                               break;
                           case 3:
                               listView.model = shotgunsModel
+                              break;
+                          case 4:
+                              listView.model = magazinesModel
                               break;
                           }
                       }
